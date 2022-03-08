@@ -139,7 +139,7 @@ public class BasicStateMachineTest {
         String expectedMessage
     ) {
         T exception = assertThrows(expectedException, executable);
-        assertEquals(exception.getMessage(), expectedMessage);
+        assertEquals(expectedMessage, exception.getMessage());
     }
 
 }
