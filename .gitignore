@@ -1,5 +1,49 @@
-# Ignore Gradle project-specific cache directory
-.gradle
 
-# Ignore Gradle build output directory
-build
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+
+### MAVEN ###
+/.mvn/
+mvnw
+mvnw.cmd
+/target/
+**/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+
+### GRADLE ###
+/.gradle/
+gradle/
+gradlew
+gradlew.bat
+/build/
+**/build/
+
+
+### Logs ###
+log
+*.log
+
