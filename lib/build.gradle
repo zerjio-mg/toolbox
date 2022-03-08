@@ -36,7 +36,7 @@ testlogger {
     showStackTraces true
     showFullStackTraces false
     showCauses true
-    slowThreshold 500
+    slowThreshold 1000
     showSummary true
     showSimpleNames false
     showPassed true
