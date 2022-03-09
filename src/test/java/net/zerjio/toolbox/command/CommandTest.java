@@ -21,7 +21,7 @@ class CommandTest {
 
         CommandArguments arguments = new CommandArguments()
             .put("text", "abc")
-            .put("number", Integer.valueOf(666));
+            .put("number", 666);
 
         CommandInput input = new CommandInputReader(new BufferedReader(new StringReader("one\ntwo\nthree")));
         CommandOutput output = new CommandOutputWriter(buffer);
