@@ -1,11 +1,15 @@
 package net.zerjio.toolbox.command.util;
 
-import net.zerjio.toolbox.command.Command;
 import net.zerjio.toolbox.command.CommandArguments;
+import net.zerjio.toolbox.command.CommandPipeable;
 
 import java.util.Optional;
 
-public class CatCommand extends Command {
+public class CatCommand extends CommandPipeable {
+
+    public static final String COMMAND_NAME = "cat";
+
+    public static final String PARAMETER_SHOW_NUMBER = "show-number";
 
     private StringBuilder buffer;
 
@@ -14,17 +18,22 @@ public class CatCommand extends Command {
     private int lineNumber;
 
     public CatCommand() {
-        this(CommandArguments.NO_ARGUMENTS);
+        this(new CommandArguments());
     }
 
     public CatCommand(CommandArguments arguments) {
-        super("cat", arguments);
+        super(COMMAND_NAME, arguments);
+    }
+
+    public CatCommand showNumbers(Boolean value) {
+        arguments.put(PARAMETER_SHOW_NUMBER, value);
+        return this;
     }
 
     @Override
     public void start() {
         buffer = new StringBuilder();
-        showLineNumbers = arguments.getBoolean("show-number", Boolean.FALSE);
+        showLineNumbers = arguments.getBoolean(PARAMETER_SHOW_NUMBER, Boolean.FALSE);
         lineNumber = 0;
     }
 

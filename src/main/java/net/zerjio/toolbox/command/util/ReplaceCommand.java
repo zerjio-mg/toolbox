@@ -1,17 +1,17 @@
 package net.zerjio.toolbox.command.util;
 
-import net.zerjio.toolbox.command.Command;
 import net.zerjio.toolbox.command.CommandArguments;
+import net.zerjio.toolbox.command.CommandPipeable;
 
 import java.util.Optional;
 
-public class ReplaceCommand extends Command {
+public class ReplaceCommand extends CommandPipeable {
 
     private String replace;
     private String with;
 
     public ReplaceCommand() {
-        this(CommandArguments.NO_ARGUMENTS);
+        this(new CommandArguments());
     }
 
     public ReplaceCommand(CommandArguments arguments) {

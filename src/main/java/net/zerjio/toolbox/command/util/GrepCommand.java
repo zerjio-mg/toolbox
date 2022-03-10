@@ -1,18 +1,18 @@
 package net.zerjio.toolbox.command.util;
 
-import net.zerjio.toolbox.command.Command;
 import net.zerjio.toolbox.command.CommandArguments;
+import net.zerjio.toolbox.command.CommandPipeable;
 
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GrepCommand extends Command {
+public class GrepCommand extends CommandPipeable {
 
     private Pattern pattern;
 
     public GrepCommand() {
-        this(CommandArguments.NO_ARGUMENTS);
+        this(new CommandArguments());
     }
 
     public GrepCommand(CommandArguments arguments) {

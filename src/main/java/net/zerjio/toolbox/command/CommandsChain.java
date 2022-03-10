@@ -11,7 +11,7 @@ public class CommandsChain {
 
     private final CommandOutput output;
 
-    private List<Command> commandsChain;
+    private List<CommandPipeable> commandsChain;
 
     public CommandsChain(CommandInput input, CommandOutput output) {
         this.input = input;
@@ -19,20 +19,20 @@ public class CommandsChain {
         this.commandsChain = new ArrayList<>();
     }
 
-    public CommandsChain link(Command... commands) {
+    public CommandsChain link(CommandPipeable... commands) {
         Collections.addAll(commandsChain, commands);
         return this;
     }
 
     public void run() {
-        commandsChain.forEach(Command::start);
+        commandsChain.forEach(CommandPipeable::start);
         while(true) {
             Optional<String> item = input.read();
             if (item.isEmpty()) {
-                commandsChain.forEach(Command::end);
+                commandsChain.forEach(CommandPipeable::end);
                 return;
             }
-            for(Command c : commandsChain) {
+            for(CommandPipeable c : commandsChain) {
                 item = c.run(item.get());
                 if (item.isEmpty()) {
                     break;

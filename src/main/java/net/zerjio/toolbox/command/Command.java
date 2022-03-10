@@ -1,20 +1,14 @@
 package net.zerjio.toolbox.command;
 
-import java.util.Optional;
-
 public abstract class Command {
-
-    private static final CommandInput NO_INPUT = new CommandInputNull();
-
-    private static final CommandOutput NO_OUTPUT = new CommandOutputNull();
 
     private final String name;
 
     protected CommandArguments arguments;
 
-    protected CommandInput input = NO_INPUT;
+    protected CommandInput input = CommandInput.NO_INPUT;
 
-    protected CommandOutput output = NO_OUTPUT;
+    protected CommandOutput output = CommandOutput.NO_OUTPUT;
 
     public Command(String name, CommandArguments arguments) {
         this.name = name;
@@ -35,23 +29,6 @@ public abstract class Command {
         return name;
     }
 
-    public void run() {
-        start();
-        Optional<String> text = input.read();
-        do {
-            if (text.isPresent()) {
-                output.write(run(text.get()).get());
-            }
-            text = input.read();
-        } while (text.isPresent());
-        end();
-    }
+    public abstract void run();
 
-    public void start() {
-    }
-
-    public void end() {
-    }
-
-    public abstract Optional<String> run(String item);
 }

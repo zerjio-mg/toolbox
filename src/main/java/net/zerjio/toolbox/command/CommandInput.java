@@ -4,5 +4,9 @@ import java.util.Optional;
 
 public interface CommandInput {
 
-    Optional<String> read();
+    CommandInput NO_INPUT = new CommandInput() {};
+
+    default Optional<String> read() {
+        return Optional.empty();
+    }
 }

@@ -3,7 +3,7 @@ package net.zerjio.toolbox.command;
 import net.zerjio.toolbox.command.util.CatCommand;
 import net.zerjio.toolbox.command.util.GrepCommand;
 import net.zerjio.toolbox.command.util.ReplaceCommand;
-import net.zerjio.toolbox.command.util.TestCommand;
+import net.zerjio.toolbox.command.util.DumpCommand;
 
 import java.io.BufferedReader;
 import java.io.StringReader;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CommandTest {
 
     @Test
-    public void givenTestCommandWhenExecutedThenOuputIsCorrect() {
+    public void givenDumpCommandWhenExecutedThenOuputIsCorrect() {
 
         StringWriter buffer = new StringWriter();
 
@@ -26,7 +26,7 @@ class CommandTest {
         CommandInput input = new CommandInputReader(new BufferedReader(new StringReader("one\ntwo\nthree")));
         CommandOutput output = new CommandOutputWriter(buffer);
 
-        new TestCommand(arguments)
+        new DumpCommand(arguments)
             .withInput(input)
             .withOutput(output)
             .run();
@@ -55,13 +55,11 @@ class CommandTest {
 
         StringWriter buffer = new StringWriter();
 
-        CommandArguments arguments = new CommandArguments()
-            .put("show-number", true);
-
         CommandInput input = new CommandInputReader(new BufferedReader(new StringReader("one\ntwo\nthree")));
         CommandOutput output = new CommandOutputWriter(buffer);
 
-        new CatCommand(arguments)
+        new CatCommand()
+            .showNumbers(true)
             .withInput(input)
             .withOutput(output)
             .run();
