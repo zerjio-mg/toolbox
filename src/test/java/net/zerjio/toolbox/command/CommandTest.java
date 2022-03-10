@@ -78,9 +78,9 @@ class CommandTest {
         new CommandsChain(input, output)
             .link(
                 new CatCommand(),
-                new GrepCommand(new CommandArguments().put("pattern", "o")),
-                new ReplaceCommand(new CommandArguments().put("replace", "o").put("with", "X")),
-                new ReplaceCommand(new CommandArguments().put("replace", "\n").put("with", ""))
+                new GrepCommand().pattern("o"),
+                new ReplaceCommand().replace("o").with("X"),
+                new ReplaceCommand().replace("\n").with("")
             )
             .run();
 

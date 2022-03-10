@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 
 public class GrepCommand extends CommandPipeable {
 
+    public static final String PARAMETER_PATTERN = "pattern";
+
     private Pattern pattern;
 
     public GrepCommand() {
@@ -19,9 +21,14 @@ public class GrepCommand extends CommandPipeable {
         super("grep", arguments);
     }
 
+    public GrepCommand pattern(String value) {
+        arguments.put(PARAMETER_PATTERN, value);
+        return this;
+    }
+
     @Override
     public void start() {
-        pattern = Pattern.compile(arguments.getString("pattern", ""));
+        pattern = Pattern.compile(arguments.getString(PARAMETER_PATTERN, ""));
     }
 
     @Override

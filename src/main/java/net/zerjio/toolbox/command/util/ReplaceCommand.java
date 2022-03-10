@@ -7,6 +7,9 @@ import java.util.Optional;
 
 public class ReplaceCommand extends CommandPipeable {
 
+    public static final String PARAMETER_REPLACE = "replace";
+    public static final String PARAMETER_WITH = "with";
+
     private String replace;
     private String with;
 
@@ -18,10 +21,20 @@ public class ReplaceCommand extends CommandPipeable {
         super("replace", arguments);
     }
 
+    public ReplaceCommand replace(String value) {
+        arguments.put(PARAMETER_REPLACE, value);
+        return this;
+    }
+
+    public ReplaceCommand with(String value) {
+        arguments.put(PARAMETER_WITH, value);
+        return this;
+    }
+
     @Override
     public void start() {
-        replace = arguments.getString("replace", "");
-        with = arguments.getString("with", "");
+        replace = arguments.getString(PARAMETER_REPLACE, "");
+        with = arguments.getString(PARAMETER_WITH, "");
     }
 
     @Override
